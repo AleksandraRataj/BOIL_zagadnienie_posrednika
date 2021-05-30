@@ -479,14 +479,21 @@ function calculateResult() {
                     if (deltas[i][j] > maxValue) {
                         maxValue = deltas[i][j];
                         isAbove = true;
-                        y = i;
-                        x = j;
+                        x = i;
+                        y = j;
                     }
                 }
             }
 
-            console.log("x: " + x)
-            console.log("y: " + y)
+            // for (let i = 0; i < 4; i++) {
+            //     for (let j = 0; j < 4; j++) {
+            //         console.log(i + ", " + j);
+            //         console.log(deltas[i][j]);
+            //     }
+            // }
+
+            console.log("x: " + x);
+            console.log("y: " + y);
 
             // let cykl1x = [];
             // let cykl1y = [];
@@ -583,11 +590,11 @@ function calculateResult() {
 
             for (let i = 0; i < 4; i++) {
                 for (let j = 0; j < 4; j++) {
-                    if (deltas[i][j] === null && y === i) {
+                    if (deltas[i][j] === null && y === j) {
                        const nowyPunkt = new Punkt(i,j);
                        punktPion.push(nowyPunkt);
                     }
-                    if (deltas[i][j] === null && x === j) {
+                    if (deltas[i][j] === null && x === i) {
                         const nowyPunkt = new Punkt(i,j);
                         punktPoziom.push(nowyPunkt);
                     }
@@ -597,10 +604,11 @@ function calculateResult() {
             for (let i = 0; i < punktPoziom.length; i++) {
                 for (let j = 0; j < 4; j++) {
 
-                    if(deltas[punktPoziom[i].x][j] === null && j !== punktPoziom[i].y){
+                    if(deltas[j][punktPoziom[i].y] === null && j !== punktPoziom[i].x) {
+                        console.log(j + "," +  punktPoziom[i].y);
 
                         let punkt1 = new Punkt(x, y);
-                        let punkt2 = new Punkt(punktPoziom[i].x, j);
+                        let punkt2 = new Punkt(j, punktPoziom[i].y);
 
                         cykl.push(punkt1);
                         cykl.push(punktPoziom[i]);
@@ -609,11 +617,41 @@ function calculateResult() {
 
                         break;
                     }
+
+                    if(cykl.length === 4) {
+                        break;
+                    }
                 }
-                if(cykl.length === 4){
-                    break;
-                }
+                console.log("\n");
             }
+
+            console.log(cykl);
+            // break;
+
+            console.log("1. : " + baseSolution[cykl[0].x][cykl[0].y]);
+            console.log("2. : " + baseSolution[cykl[1].x][cykl[1].y]);
+            console.log("3. : " + baseSolution[cykl[2].x][cykl[2].y]);
+            console.log("4. : " + baseSolution[cykl[3].x][cykl[3].y]);
+            
+            let subtraction;
+            if (baseSolution[cykl[1].x][cykl[1].y] < baseSolution[cykl[3].x][cykl[3].y]) {
+                subtraction = baseSolution[cykl[1].x][cykl[1].y];
+            } else {
+                subtraction = baseSolution[cykl[3].x][cykl[3].y];
+            }
+
+            console.log(subtraction);
+
+            baseSolution[cykl[0].x][cykl[0].y] += subtraction;
+            baseSolution[cykl[1].x][cykl[1].y] -= subtraction;
+            baseSolution[cykl[2].x][cykl[2].y] += subtraction;
+            baseSolution[cykl[3].x][cykl[3].y] -= subtraction;
+
+
+            // console.log(baseSolution);
+
+            // break;
+
 
             alfas = [0, null, null, null];
             betas = [null, null, null, null];
@@ -639,6 +677,8 @@ function calculateResult() {
             console.log("nowe bety")
             console.log(betas)
 
+            // break;
+
             //deltas
             deltas = [[],[],[],[]];
             for(let i = 0; i < 4; i++){
@@ -651,6 +691,10 @@ function calculateResult() {
                 }
             }
 
+
+            // console.log(deltas)
+            // break;
+
             max = 0;
             for (let i = 0; i < 4; i++) {
                 for (let j = 0; j < 4; j++) {
@@ -659,6 +703,9 @@ function calculateResult() {
                     }
                 }
             }
+
+            // console.log(max);
+            // break;
 
             let z = 0;
             //liczenie nowych zysków
@@ -789,7 +836,6 @@ function calculateResult() {
         resultWrapper.append(profit);
 
     }
-
 }
 
 button[0].addEventListener("click", calculateResult);
