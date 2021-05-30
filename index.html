@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Zagadnienie pośrednika - grupa 2.13</title>
+</head>
+<body>
+<div class="wrapper">
+
+<div>
+    <h1>Zagadnienie pośrednika</h1>
+    <h2>Grupa 2.13</h2>
+    <ul>
+        <li>Ilość dostawców: 3</li>
+        <li>Ilość odbiorców: 3</li>
+        <li>Aplikacja webowa</li>
+        <li>Interfejs: tak</li>
+        <li>Wizualizacja: tak</li>
+        <li>Blokowanie tras: nie</li>
+    </ul>
+</div>
+
+    <div class="data-wrapper">
+        <div class="table-wrapper">
+            <h3>Dostawcy</h3>
+            <table>
+                <tr class="row">
+                    <th>Podaż:</th>
+                    <td><input type="number" class="demand" value="20"></td>
+                    <td><input type="number" class="demand" value="30"></td>
+                    <td><input type="number" class="demand" value="55"></td>
+                </tr>
+                <tr class="row">
+                    <th>Cena zakupu:</th>
+                    <td><input type="number" class="purchase-cost" value="10"></td>
+                    <td><input type="number" class="purchase-cost" value="12"></td>
+                    <td><input type="number" class="purchase-cost" value="14"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-wrapper">
+            <h3>Odbiorcy</h3>
+            <table>
+                <tr class="row">
+                    <th>Popyt:</th>
+                    <td><input type="number" class="supply" value="28"></td>
+                    <td><input type="number" class="supply" value="37"></td>
+                    <td><input type="number" class="supply" value="45"></td>
+                </tr>
+                <tr class="row">
+                    <th>Cena sprzedaży:</th>
+                    <td><input type="number" class="sales-prices" value="30"></td>
+                    <td><input type="number" class="sales-prices" value="30"></td>
+                    <td><input type="number" class="sales-prices" value="25"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="table-wrapper">
+            <h3>Koszty transportu</h3>
+            <table>
+                <tr>
+                    <td><input type="number" class="transport-costs" value="17"></td>
+                    <td><input type="number" class="transport-costs" value="15"></td>
+                    <td><input type="number" class="transport-costs" value="6"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" class="transport-costs" value="7"></td>
+                    <td><input type="number" class="transport-costs" value="7"></td>
+                    <td><input type="number" class="transport-costs" value="1"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" class="transport-costs" value="15"></td>
+                    <td><input type="number" class="transport-costs" value="14"></td>
+                    <td><input type="number" class="transport-costs" value="3"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+<button type="submit" class="submit-button">Oblicz</button>
+
+    <h2 class="results">Wyniki</h2>
+    <div class="data-wrapper">
+        <div class="table-wrapper" id="profitTableWrapper"></div>
+        <div class="table-wrapper" id="optimalTransportTableWrapper"></div>
+    </div>
+
+    <div class="resultWrapper"></div>
+
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
